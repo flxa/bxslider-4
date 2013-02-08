@@ -6,7 +6,7 @@ A Responsive Slider plugin for Wordpress
 
 __bxslider__ is a responsive slider plugin built using:
 
-*	[fitvids.js](http://fitvidsjs.com/) by [Chris Coyier](http://css-tricks. "CSS-Tricks") and [Dave Rupert](http://daverupert.com "Paravel")
+*	[fitvids.js](http://fitvidsjs.com/) by [Chris Coyier](http://css-tricks.com "CSS-Tricks") and [Dave Rupert](http://daverupert.com "Paravel")
 *	[bxslider.js](http://bxslider.com/) by [Steven Wanderski](http://stevenwanderski.com "bxSlider")
 
 It uses jquery to get the job done. Yeah I know, sorry, your probably using it anyway right?
