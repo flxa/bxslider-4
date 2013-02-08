@@ -45,6 +45,8 @@ The slider will accept and render:
 *	Video (yeah fitvids)
 *	iframes
 
+Just create a bunch of slider images that are of the same dimensions e.g. 600x400 and stick each one in a post with the category you have selected. Video will just fill the space available so just paste in the iframe from vimeo or youtube and it'll just work.
+
 * * *
 
 ![Example Image of bxslider plugin](/img/screenshot.jpg "Example of bxslider with vimeo video")
@@ -146,3 +148,10 @@ Known Issue
 
 1.	One issue I came accross is that a template that I has installed while testing also included fitvids.js, this shows up as errors in the console but generally doesn't affect the plugin. This template was [WooTheme's SMPL](http://www.woothemes.com/products/smpl/) template, version 1.1.7. I ended up commenting out fitvids from a file called *third-party.js* (just fitvids part, line 20 to 172).
 2.	I'll post more issues here if I find them.
+
+Thanks
+------
+
+Thanks for checking this out, please let me know if you find any issues and i'll do my best to fix them up quickly.
+I'll be working on crreating a wp-admin page for configuration and when that happens I think it'll be ready for wordpress.org
+Until then, please use the hacky methods provided :)
