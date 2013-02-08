@@ -146,7 +146,7 @@ The bxslider definition also has many more [options](http://bxslider.com/options
 Known Issue
 -----------
 
-1.	One issue I came accross is that a template that I has installed while testing also included fitvids.js, this shows up as errors in the console but generally doesn't affect the plugin. This template was [WooTheme's SMPL](http://www.woothemes.com/products/smpl/) template, version 1.1.7. I ended up commenting out fitvids from a file called *third-party.js* (just fitvids part, line 20 to 172).
+1.	One issue I came accross is that a template that I had installed while testing also included fitvids.js, this shows up as errors in the console but generally doesn't affect the plugin. This template was [WooTheme's SMPL](http://www.woothemes.com/products/smpl/) template, version 1.1.7. I ended up commenting out fitvids from a file called *third-party.js* (just fitvids part, line 20 to 172).
 2.	I'll post more issues here if I find them.
 
 Thanks
