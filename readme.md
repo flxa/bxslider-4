@@ -32,7 +32,7 @@ Usage
 2.	Create a few posts and assign them to that category
 3.	If you wish to hide those posts from the search and main loop I sugest you install a plugin such as [Simply Exclude](http://www.codehooligans.com/projects/wordpress/simply-exclude/) to remove them from the main loop.
 4.	Install and activate the plugin
-Include `<?php echo bxslider( 'front-page-slider' ); ?>` in your template by editing the template file and pasting in the code, be sure so change `front-page-slider` to your chosen category.
+5.	Include `<?php echo bxslider( 'front-page-slider' ); ?>` in your template by editing the template file and pasting in the code, be sure to change `front-page-slider` to your chosen category, if you leave it as `bxslider( 'front-page-slider' )` it will retrieve all posts.
 
 
 E.g. Go to the backend of Wordpress `Appearance / Editor` and edit your templates Header `header.php` file to include the slider on all pages that include `header.php`.
@@ -58,24 +58,18 @@ Customization
 
 The main plugin file `bxslider.php` uses Wordpress [get_posts](http://codex.wordpress.org/Template_Tags/get_posts) function to pull posts from the category passed through from the template hook.
 
-	$args = array(
-		'category_name'   => $cat,
-		'orderby'         => 'post_date',
-		'order'           => 'DESC',
-		'post_type'       => 'post',
-		'post_status'     => 'publish',
-		'suppress_filters' => true 
-	);
+    $bx_args = array(
+        'category_name'   => $cat,
+        'orderby'         => $orderby,
+        'order'           => $order,
+        'post_type'       => $post_type,
+        'post_status'     => $post_status,
+        'suppress_filters' => true 
+    );
 
-	$posts_array = get_posts( $args ); 
+bxslider does not require any arguments passed through but you can pass in the above variables, comma separated in that order.
 
-	foreach ($posts_array as $key => $post) {
-		$content .= '<li>'.$post->post_content.'</li>';
-	}
-
-That $cat right there is the category name being passed through so you could actually provide a tag or post id's, whatever, and pull different content if that's what you want. Change it via the edit plugin page in WP Admin.
-I'm also using the entire post, you may want to change that to just the preview.
-The bxslider definition also has many more [options](http://bxslider.com/options).
+bxslider has many more [options](http://bxslider.com/options).
 
 	var defaults = {
 		

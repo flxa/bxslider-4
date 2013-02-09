@@ -29,28 +29,32 @@ License: GPL2
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-function bxslider_get_posts($cat=null) {
+function bxslider_get_posts($cat,$orderby,$order,$post_type,$post_status,$class) {
 
-    $args = array(
+    $bx_args = array(
         'category_name'   => $cat,
-        'orderby'         => 'post_date',
-        'order'           => 'DESC',
-        'post_type'       => 'post',
-        'post_status'     => 'publish',
-        'suppress_filters' => true ); 
+        'orderby'         => $orderby,
+        'order'           => $order,
+        'post_type'       => $post_type,
+        'post_status'     => $post_status,
+        'suppress_filters' => true 
+    );
 
-    $posts_array = get_posts( $args ); 
+    $bx_query = new WP_Query( $bx_args );
 
-    foreach ($posts_array as $key => $post) {
-        $content .= '<li>'.$post->post_content.'</li>';
-    }
+    while ( $bx_query->have_posts() ) :
+        $bx_query->the_post();
+        $content .= '<li>' . $bx_query->post_content . '</li>';
+    endwhile;
+
+    wp_reset_postdata();
 
     return $content;
 }
 
-function bxslider($cat) {
-    $output = bxslider_get_posts($cat);
-    $html = "<ul class='bxslider'>$output</ul>";
+function bxslider($cat=null,$orderby='post_date',$order='DESC',$post_type='post',$post_status='publish',$class='') {
+    $output = bxslider_get_posts($cat,$orderby,$order,$post_type,$post_status,$class);
+    $html = "<ul class='bxslider $class'>$output</ul>";
     return $html;
 }
 
