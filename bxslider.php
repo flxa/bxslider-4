@@ -42,9 +42,14 @@ function bxslider_get_posts($cat,$orderby,$order,$post_type,$post_status,$class)
 
     $bx_query = new WP_Query( $bx_args );
 
-    while ( $bx_query->have_posts() ) :
-        $bx_query->the_post();
-        $content .= '<li>' . $bx_query->post_content . '</li>';
+    if ($_REQUEST['bxdebug']==true) {
+        echo '<h4 class="notice">BX Slider Debug</h4>';
+        echo '<pre>'; echo print_r($bx_query); echo '</pre>';
+        echo '<h4 class="notice">End BX Slider Debug</h4>';
+    }
+
+    while ( $bx_query->have_posts() ) : $bx_query->the_post();
+        $content .= '<li>' . get_the_content( $bx_query->post->ID ) . '</li>';
     endwhile;
 
     wp_reset_postdata();
