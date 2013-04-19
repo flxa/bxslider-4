@@ -55,7 +55,7 @@ Just create a bunch of slider images that are of the same dimensions e.g. 600x40
 
 The main plugin file `bxslider.php` uses Wordpress [get_posts](http://codex.wordpress.org/Template_Tags/get_posts) function to pull posts from the category passed through from the template hook.
 
-	{% highlight php %}
+```php
     $bx_args = array(
         'category_name'   => $cat,
         'orderby'         => $orderby,
@@ -64,7 +64,6 @@ The main plugin file `bxslider.php` uses Wordpress [get_posts](http://codex.word
         'post_status'     => $post_status,
         'suppress_filters' => true 
     );
-    {% endhighlight %}
 
 bxslider does not require any arguments passed through but you can pass in the above variables, comma separated in that order.
 
