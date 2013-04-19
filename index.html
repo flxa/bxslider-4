@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>bxSlider Wordpress plugin by flxa</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>bxSlider Wordpress plugin</h1>
+        <h2>Responsive jQuery content slider</h2>
+        <a href="https://github.com/flxa/bxslider-4" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>forked from <a href="http://github.com/wandoledzep/bxslider-4">wandoledzep/bxslider-4</a></p>
+
+<p><strong>bxslider</strong> is a responsive slider plugin built using:</p>
+
+<ul>
+<li>  <a href="http://fitvidsjs.com/">fitvids.js</a> by <a href="http://css-tricks.com" title="CSS-Tricks">Chris Coyier</a> and <a href="http://daverupert.com" title="Paravel">Dave Rupert</a>
+</li>
+<li>  <a href="http://bxslider.com/">bxslider.js</a> by <a href="http://stevenwanderski.com" title="bxSlider">Steven Wanderski</a>
+</li>
+</ul><hr><h2>Usage</h2>
+
+<ol>
+<li> Create a new category for assigning posts e.g. <code>front-page-slider</code>
+</li>
+<li> Create a few posts and assign them to that category</li>
+<li> If you wish to hide those posts from the search and main loop I sugest you install a plugin such as <a href="http://www.codehooligans.com/projects/wordpress/simply-exclude/">Simply Exclude</a> to remove them from the main loop.</li>
+<li> Install and activate the plugin</li>
+<li> Include <code>&lt;?php echo bxslider( 'front-page-slider' ); ?&gt;</code> in your template by editing the template file and pasting in the code, be sure to change <code>front-page-slider</code> to your chosen category, if you leave it as <code>bxslider( 'front-page-slider' )</code> it will retrieve all posts.</li>
+</ol><p>E.g. Go to the backend of Wordpress <code>Appearance / Editor</code> and edit your templates Header <code>header.php</code> file to include the slider on all pages that include <code>header.php</code>.</p>
+
+<p>Your slide posts just need to include an image that you upload through the <code>Add Media</code> button in the post editor. 
+The slider will accept and render: </p>
+
+<ul>
+<li>  Images</li>
+<li>  Text</li>
+<li>  HTML</li>
+<li>  Video</li>
+<li>  iframes</li>
+</ul><p>Just create a bunch of slider images that are of the same dimensions e.g. 600x400 and stick each one in a post with the category you have selected. Video will just fill the space available so just paste in the iframe from vimeo or youtube and it'll just work.</p>
+
+<hr><p><img src="https://raw.github.com/flxa/bxslider-4/master/img/screenshot.jpg" alt="Example Image of bxslider plugin" title="Example of bxslider with vimeo video"></p>
+
+<hr><h2>Customization</h2>
+
+<p>The main plugin file <code>bxslider.php</code> uses Wordpress <a href="http://codex.wordpress.org/Template_Tags/get_posts">get_posts</a> function to pull posts from the category passed through from the template hook.</p>
+
+<div class="highlight"><pre>    <span class="nv">$bx_args</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">'category_name'</span>   <span class="o">=&gt;</span> <span class="nv">$cat</span><span class="p">,</span>
+        <span class="s1">'orderby'</span>         <span class="o">=&gt;</span> <span class="nv">$orderby</span><span class="p">,</span>
+        <span class="s1">'order'</span>           <span class="o">=&gt;</span> <span class="nv">$order</span><span class="p">,</span>
+        <span class="s1">'post_type'</span>       <span class="o">=&gt;</span> <span class="nv">$post_type</span><span class="p">,</span>
+        <span class="s1">'post_status'</span>     <span class="o">=&gt;</span> <span class="nv">$post_status</span><span class="p">,</span>
+        <span class="s1">'suppress_filters'</span> <span class="o">=&gt;</span> <span class="k">true</span> 
+    <span class="p">);</span>
+</pre></div>
+
+<p>bxslider does not require any arguments passed through but you can pass in the above variables, comma separated in that order.</p>
+
+<p>bxslider has many more <a href="http://bxslider.com/options">options</a>.</p>
+
+<div class="highlight"><pre>    <span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="p">{</span>
+
+        <span class="c1">// GENERAL</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">'horizontal'</span><span class="p">,</span>
+        <span class="nx">slideSelector</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="nx">infiniteLoop</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">hideControlOnEnd</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">speed</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nx">easing</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">slideMargin</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">startSlide</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">randomStart</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">captions</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">ticker</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">tickerHover</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">adaptiveHeight</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">adaptiveHeightSpeed</span><span class="o">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nx">touchEnabled</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">swipeThreshold</span><span class="o">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="nx">video</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">useCSS</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+        <span class="c1">// PAGER</span>
+        <span class="nx">pager</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">pagerType</span><span class="o">:</span> <span class="s1">'full'</span><span class="p">,</span>
+        <span class="nx">pagerShortSeparator</span><span class="o">:</span> <span class="s1">' / '</span><span class="p">,</span>
+        <span class="nx">pagerSelector</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">buildPager</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">pagerCustom</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+        <span class="c1">// CONTROLS</span>
+        <span class="nx">controls</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">nextText</span><span class="o">:</span> <span class="s1">'Next'</span><span class="p">,</span>
+        <span class="nx">prevText</span><span class="o">:</span> <span class="s1">'Prev'</span><span class="p">,</span>
+        <span class="nx">nextSelector</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">prevSelector</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nx">autoControls</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">startText</span><span class="o">:</span> <span class="s1">'Start'</span><span class="p">,</span>
+        <span class="nx">stopText</span><span class="o">:</span> <span class="s1">'Stop'</span><span class="p">,</span>
+        <span class="nx">autoControlsCombine</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">autoControlsSelector</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span>
+
+        <span class="c1">// AUTO</span>
+        <span class="nx">auto</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">pause</span><span class="o">:</span> <span class="mi">4000</span><span class="p">,</span>
+        <span class="nx">autoStart</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">autoDirection</span><span class="o">:</span> <span class="s1">'next'</span><span class="p">,</span>
+        <span class="nx">autoHover</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nx">autoDelay</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+
+        <span class="c1">// CAROUSEL</span>
+        <span class="nx">minSlides</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">maxSlides</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="nx">moveSlides</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="nx">slideWidth</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+
+        <span class="c1">// CALLBACKS</span>
+        <span class="nx">onSliderLoad</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+        <span class="nx">onSlideBefore</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+        <span class="nx">onSlideAfter</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+        <span class="nx">onSlideNext</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{},</span>
+        <span class="nx">onSlidePrev</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{}</span>
+    <span class="p">}</span>
+</pre></div>
+
+<hr>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/flxa/bxslider-4/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/flxa/bxslider-4/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/flxa/bxslider-4"></a> is maintained by <a href="https://github.com/flxa">flxa</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
