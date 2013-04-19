@@ -63,8 +63,6 @@ function bxslider($cat=null,$orderby='post_date',$order='DESC',$post_type='post'
     return $html;
 }
 
-add_action( 'admin_notices', 'bxslider' );
-
 function bxslider_css() {
     wp_register_style( 'bxslider-style', plugins_url('css/jquery.bxslider.css', __FILE__) );
     wp_enqueue_style( 'bxslider-style' );
