@@ -64,12 +64,12 @@ The main plugin file `bxslider.php` uses Wordpress [get_posts](http://codex.word
         'post_status'     => $post_status,
         'suppress_filters' => true 
     );
-
+```
 bxslider does not require any arguments passed through but you can pass in the above variables, comma separated in that order.
 
 bxslider has many more [options](http://bxslider.com/options).
 
-	{% highlight javascript %}
+```javascript
 	var defaults = {
 		
 		// GENERAL
@@ -133,6 +133,6 @@ bxslider has many more [options](http://bxslider.com/options).
 		onSlideNext: function() {},
 		onSlidePrev: function() {}
 	}
-	{% endhighlight %}
+```
 
 * * *
