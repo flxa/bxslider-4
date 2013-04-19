@@ -47,7 +47,7 @@ Just create a bunch of slider images that are of the same dimensions e.g. 600x40
 
 * * *
 
-![Example Image of bxslider plugin](http://flxa.github.com/bxslider-4/img/screenshot.jpg "Example of bxslider with vimeo video")
+![Example Image of bxslider plugin](https://raw.github.com/flxa/bxslider-4/master/img/screenshot.jpg "Example of bxslider with vimeo video")
 
 * * *
 
